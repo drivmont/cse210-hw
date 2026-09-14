@@ -6,8 +6,16 @@ class Program
     static void Main(string[] args)
     {
         Journal _journal = new Journal();
-        promptGenerator _promptGenerator = new promptGenerator();
+        PromptGenerator _promptGenerator = new PromptGenerator();
         bool running = true;
+
+        // Exceeds requirements: the program does not crash on bad input or
+        // missing files. Menu input is validated with int.TryParse instead of
+        // int.Parse, saving warns and asks for confirmation before it
+        // overwrites an existing file, loading checks that the file exists
+        // before reading it, and PromptGenerator falls back to a small
+        // built in list of prompts if prompts.txt is missing, empty, or
+        // cannot be read, instead of throwing an unhandled exception.
 
         while (running)
         {
